@@ -1,0 +1,19 @@
+<h1>Listing all Posts</h1>
+
+
+<table>
+  <tr>
+      <th>Name</th>
+       <th>Phone</th>
+  </tr>
+
+  <% @posts.each do |post| %>
+  <tr>
+    <td><%= post.id %></td>
+    <td><%= post.Name %></td>
+    <td><%= post.Phone %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Show', post_path(post) %></td>
+  </tr>
+  <% end %>
+</table>

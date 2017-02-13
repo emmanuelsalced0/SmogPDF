@@ -1,0 +1,187 @@
+<h1>Showing <%=@post.Name %>'s Post</h1>
+<h3>
+  Name: <%= @post.Name %> <br>
+  Phone: <%= @post.Phone %> <br>
+  Address: <%= @post.Adress %> <br>
+  Veh/Year: <%= @post.Veh_Year %> <br>
+  Make: <%= @post.Make %> <br>
+  Model: <%= @post.Model %> <br>
+  License Plate: <%= @post.LicPlate %> <br>  
+  Miles: <%= @post.Miles %> <br>
+  V.I.N.: <%= @post.VIN %> <br>
+</h3>
+
+<h2>Payment Method:</h2>
+
+<h4>
+    Paid With Visa
+    <% if @post.Visa == "1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Visa == "0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %> <br>
+    Paid With MasterCard
+    <% if @post.MasterCard=="1"%>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.MasterCard == "0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %> <br>
+    Paid With Discover
+    <% if @post.Discover == "1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %> 
+    <% if @post.Discover == "0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %> <br>
+    Paid With Cash
+    <% if @post.Cash=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Cash == "0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %> <br>
+</h4>
+
+<h4>
+    PAIR 
+    <% if @post.Pair=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Pair=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    AIR
+    <% if @post.Air=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Air=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    ACL
+    <% if @post.Acl=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Acl=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    TC/CAC
+    <% if @post.Tc_cac=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Tc_cac=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    EFE
+    <% if @post.Efe=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Efe=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    EGR
+    <% if @post.Egr=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Egr=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    CAN
+    <% if @post.Can=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Can=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    CAT
+    <% if @post.Cat=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Cat=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    MIL
+    <% if @post.Mil=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Mil=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    O2S
+    <% if @post.O2s=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.O2s=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    PCV
+    <% if @post.Pcv=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Pcv=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+
+    Timing
+    <% if @post.Timing=="1" %>
+      <span style="font-family:Wingdings">&#163;</span>
+    <% end %>
+    <% if @post.Timing=="0" %>
+      <span style="font-family:Wingdings">&#161;</span>
+    <% end %><br>
+</h4>
+
+$ <%=@post.CASmog.to_f.round(2) %> | California Smog Inspection<br>
+$ <%=@post.CAInsp.to_f.round(2) %> | California Smog Insp./ Heavy Duty Vehicles<br>
+$ <%=@post.VIN2.to_f.round(2) %> | VIN<br>
+$ <%=@post.CASmogCert.to_f.round(2) %> | California Smog Certificate<br>
+$ <%=@post.PreInsp.to_f.round(2) %> | Pre-Inspection<br>
+$ <%=@post.ReInsp.to_f.round(2) %> | Re-Inspection<br>
+$ <%=@post.EngCover.to_f.round(2) %> | Remove Eng. Cover (If Needed) Vans<br>
+$ <%=@post.Other.to_f.round(2) %> | Other<br>
+$ <%=@post.Evap.to_f.round(2) %> | Evap. Test<br>
+$ <%=@post.Est.to_f.round(2) %> | Estimates<br>
+$ <%=@post.GasCap.to_f.round(2) %> | Gas Cap(s)<br>
+$ <%=@post.Mis.to_f.round(2) %> | Miscellaneous<br>
+$ <%=@post.Tax.to_f %> | Tax<br>
+
+<div id="divCheckbox" style="display: none;"> 
+<%=sum=0 %>
+<%=sum+=@post.CASmog.to_f %>
+<%=sum+=@post.CAInsp.to_f %>
+<%=sum+=@post.VIN2.to_f %>
+<%=sum+=@post.CASmogCert.to_f %>
+<%=sum+=@post.PreInsp.to_f %>
+<%=sum+=@post.ReInsp.to_f %>
+<%=sum+=@post.EngCover.to_f %>
+<%=sum+=@post.Other.to_f %>
+<%=sum+=@post.Evap.to_f %>
+<%=sum+=@post.Est.to_f %>
+<%=sum+=@post.GasCap.to_f %>
+<%=sum+=@post.Mis.to_f %>
+<%=tax=sum* @post.Tax.to_f%>
+
+  
+
+</div>
+$ <%=sum.round(2)%> | Total Without Tax<br>
+$ <%=(tax+sum).round(2)%> | Total With Tax<br>
+
+
+<%= link_to "Print (PDF)", post_path(@post, format: "pdf") %>
+
+<%= link_to "Edit this Post", edit_post_path(@post) %> |
+
+<%= link_to "Back to post listing", posts_path %>
+
