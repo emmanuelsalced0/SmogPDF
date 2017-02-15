@@ -1,6 +1,7 @@
 class PostPdf < Prawn::Document
   def initialize(post, view)
     super(top_margin: 30, right_margin: 30, left_margin: 30)
+    
     @post = post
     @view= view
     image "#{Rails.root}/images/header.jpg", :width => bounds.width, :height => 186, :hposition => :center 
@@ -37,7 +38,8 @@ class PostPdf < Prawn::Document
   end
 
   def checks
-    bounding_box([0, bounds.top - 360], :width => 80, :height => 200) do
+    
+    bounding_box([0, bounds.top - 370], :width => 80, :height => 270) do
       move_down 2
       pair
       air
@@ -143,112 +145,216 @@ class PostPdf < Prawn::Document
 
   def visa
     if(@post.Visa.to_f==1)
-      bounding_box([0, bounds.top - 340], :width => 100, :height => 30) do
-        text_box "Visa #{@post.Visa}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([27, bounds.top - 335], :width => 53, :height => 16) do
+        text_box "Visa ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 14, :hposition => :center
+        #transparent(0.5) { stroke_bounds }
       end
     end
     if(@post.Visa.to_f==0)
-      bounding_box([0, bounds.top - 340], :width => 100, :height => 30) do
-        text_box "Visa #{@post.Visa}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([27, bounds.top - 335], :width => 53, :height => 16) do
+        text_box "Visa ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 14, :hposition => :center
+        #transparent(0.5) { stroke_bounds }
       end
     end
   end
 
   def mastercard
     if(@post.MasterCard.to_f==1)
-      bounding_box([100, bounds.top - 340], :width => 110, :height => 30) do
-        text_box "MasterCard #{@post.MasterCard}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([100, bounds.top - 335], :width => 110, :height => 16) do
+        text_box "MasterCard ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 14, :hposition => :center
+        #transparent(0.5) { stroke_bounds }
       end
     end
     if(@post.MasterCard.to_f==0)
-      bounding_box([100, bounds.top - 340], :width => 110, :height => 30) do
-        text_box "MasterCard #{@post.MasterCard}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([100, bounds.top - 335], :width => 110, :height => 16) do
+        text_box "MasterCard ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 14, :hposition => :center
+        #transparent(0.5) { stroke_bounds }
       end
     end
   end
 
+
   def discover
     if(@post.Discover.to_f==1)
-      bounding_box([210, bounds.top - 340], :width => 100, :height => 30) do
-        text_box "Discover #{@post.Discover}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([231, bounds.top - 335], :width => 90, :height => 16) do
+        text_box "Discover ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 14, :hposition => :center
+        #transparent(0.5) { stroke_bounds }
       end
     end
     if(@post.Discover.to_f==0)
-      bounding_box([210, bounds.top - 340], :width => 100, :height => 30) do
-        text_box "Discover #{@post.Discover}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([231, bounds.top - 335], :width => 90, :height => 16) do
+        text_box "Discover ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 14, :hposition => :center
+       # transparent(0.5) { stroke_bounds }
       end
     end
   end
 
   def cash
     if(@post.Cash.to_f==1)
-      bounding_box([310, bounds.top - 340], :width => 100, :height => 30) do
-        text_box "Cash #{@post.Cash}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([340, bounds.top - 335], :width => 60, :height => 16) do
+        text_box "Cash ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 14, :hposition => :center
+       # transparent(0.5) { stroke_bounds }
       end
     end
     if(@post.Cash.to_f==0)
-      bounding_box([310, bounds.top - 340], :width => 100, :height => 30) do
-        text_box "Cash #{@post.Cash}", size: 16, style: :bold,:overflow => :truncate, size: 16, style: :bold, :align => :center
-      #transparent(0.5) { stroke_bounds }
+      bounding_box([340, bounds.top - 335], :width => 60, :height => 16) do
+        text_box "Cash ", size: 16, style: :bold,:align => :right
+        image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 14, :hposition => :center
+       # transparent(0.5) { stroke_bounds }
       end
     end
   end
 
-  def pair
-    text "  PAIR: #{@post.Pair}", size: 14, style: :bold
+
+ def pair
+    if(@post.Pair.to_f==1)
+      text_box "PAIR ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - 2]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Pair.to_f==0)
+      text_box "PAIR ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - 2]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end    
    
   def air
-    text "  AIR: #{@post.Air}", size: 14, style: :bold
+    move_down 10
+    if(@post.Air.to_f==1)
+      text_box "AIR ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - shift]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Air.to_f==0)
+      text_box "AIR ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - shift]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def acl
-    text "  ACL: #{@post.Acl}", size: 14, style: :bold
+    move_down 10
+    if(@post.Acl.to_f==1)
+      text_box "ACL ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - (shift*2)]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Acl.to_f==0)
+      text_box "ACL ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - (shift*2)]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def tccac
-    text "  TC/CAC: #{@post.Tc_cac}", size: 14, style: :bold
+    move_down 10
+    if(@post.Tc_cac.to_f==1)
+      text_box "TC/CAC ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - (shift*3)+1]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Tc_cac.to_f==0)
+      text_box "TC/CAC ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*3)+1]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end  
 
   def efe
-    text "  EFE: #{@post.Efe}", size: 14, style: :bold
+    move_down 10
+    if(@post.Efe.to_f==1)
+      text_box "EFE ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*4)-2]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Efe.to_f==0)
+      text_box "EFE ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*4)+2]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end 
  
   def egr
-    text "  EGR: #{@post.Egr}", size: 14, style: :bold
+    move_down 10
+    if(@post.Egr.to_f==1)
+      text_box "EGR ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*5)+3]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Egr.to_f==0)
+      text_box "EGR ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*5)+3]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def can
-    text "  CAN: #{@post.Can}", size: 14, style: :bold
+    move_down 10
+    if(@post.Can.to_f==1)
+      text_box "CAN ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*6)+4]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Can.to_f==0)
+      text_box "CAN ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*6)+4]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def cat
-    text "  CAT: #{@post.Cat}", size: 14, style: :bold
+    move_down 10
+    if(@post.Cat.to_f==1)
+      text_box "CAT ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*7)+5]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Cat.to_f==0)
+      text_box "CAT ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*7)+5]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def mil
-    text "  MIL: #{@post.Mil}", size: 14, style: :bold
+    move_down 10
+    if(@post.Mil.to_f==1)
+      text_box "MIL ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*8)+6]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Mil.to_f==0)
+      text_box "MIL ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*8)+6]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def o2s
-    text "  O2S: #{@post.O2s}", size: 14, style: :bold
+    move_down 10
+    if(@post.O2s.to_f==1)
+      text_box "O2S ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*9)+7]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.O2s.to_f==0)
+      text_box "O2S ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*9)+7]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def pcv
-    text "  PCV: #{@post.Pcv}", size: 14, style: :bold
+    move_down 10
+    if(@post.Pcv.to_f==1)
+      text_box "PCV ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*10)+8]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Pcv.to_f==0)
+      text_box "PCV ", size: 14, style: :bold, :align => :left, :at => [15, bounds.top - (shift*10)+8]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
 
   def timing
-    text "  Timing: #{@post.Timing}", size: 14, style: :bold
+    move_down 10
+   if(@post.Timing.to_f==1)
+      text_box "Timing ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*11)+9]
+      image "#{Rails.root}/images/check_true.jpg", :width => 14, :height => 12, :hposition => :left
+    end
+    if(@post.Timing.to_f==0)
+      text_box "Timing ", size: 14, style: :bold, :align => :left, :at => [15,  bounds.top - (shift*11)+9]
+      image "#{Rails.root}/images/check_false.jpg", :width => 14, :height => 12, :hposition => :left
+    end
   end
-
 
   def casmog
     text "California Smog Inspection: #{price(@post.CASmog)}", size: 16, style: :bold, :align => :right
@@ -317,6 +423,9 @@ class PostPdf < Prawn::Document
   def box
    
   end
+  def shift
+    shift=23
+  end  
 
   def totalsum
     sum=0
