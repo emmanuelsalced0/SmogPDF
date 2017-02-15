@@ -36,7 +36,7 @@
       format.html
       format.pdf do
         pdf = PostPdf.new(@post, view_context)
-        send_data pdf.render, filename: "#{@post.Name}, #{@post.Model}.pdf",
+        send_data pdf.render, filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf",
                               type: "appplication/pdf",
                               disposition: "inline"
       end
@@ -47,16 +47,10 @@
     @posts = Post.all
     
   end
-
-   
-
-
-
-
  
   private
     def article_params
-      params.require(:post).permit(:Name, :Phone, :Adress, :Veh_Year, :Make, :Model, :LicPlate, :Miles, :VIN, :Visa, :MasterCard, :Discover, :Cash, :Pair, :Air, :Acl, :Tc_cac, :Efe, :Egr, :Can, :Cat, :Mil, :O2s, :Pcv, :Timing, :CASmog, :CAInsp, :VIN2, :CASmogCert, :PreInsp, :ReInsp, :EngCover, :Other, :Evap, :Est, :GasCap, :Mis, :Tax)
+      params.require(:post).permit(:Name, :Phone, :Adress, :Veh_Year, :Make, :Model, :LicPlate, :Miles, :VIN, :Visa, :MasterCard, :Discover, :Cash, :Pair, :Air, :Acl, :Tc_cac, :Efe, :Egr, :Can, :Cat, :Mil, :O2s, :Pcv, :Timing, :CASmog, :CAInsp, :VIN2, :CASmogCert, :PreInsp, :ReInsp, :EngCover, :Other, :Evap, :Est, :GasCap, :Mis, :Tax, :Clientnum)
     end 
 
   

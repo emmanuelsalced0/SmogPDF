@@ -1,6 +1,8 @@
 <h1> Edit Post</h1>
 
 <%= form_for @post do |f| %>
+    <%= f.label(:Clientnum, "No.") %><br>
+    <%= f.text_field :Clientnum %><br>
     <%= f.label :Name %><br>
     <%= f.text_field :Name %><br>
     <%= f.label :Phone %> <br>

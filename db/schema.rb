@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212180919) do
+ActiveRecord::Schema.define(version: 20170214055705) do
 
   create_table "posts", force: :cascade do |t|
     t.string "Name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170212180919) do
     t.string "Tax",        default: "9.75"
     t.float  "TotalWtax"
     t.float  "Total"
+    t.float  "Clientnum"
   end
 
 end

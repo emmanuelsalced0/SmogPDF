@@ -1,5 +1,6 @@
 <h1>Showing <%=@post.Name %>'s Post</h1>
 <h3>
+  No. <%= @post.Clientnum.to_int %> <br>
   Name: <%= @post.Name %> <br>
   Phone: <%= @post.Phone %> <br>
   Address: <%= @post.Adress %> <br>
@@ -154,7 +155,7 @@ $ <%=@post.Evap.to_f.round(2) %> | Evap. Test<br>
 $ <%=@post.Est.to_f.round(2) %> | Estimates<br>
 $ <%=@post.GasCap.to_f.round(2) %> | Gas Cap(s)<br>
 $ <%=@post.Mis.to_f.round(2) %> | Miscellaneous<br>
-$ <%=@post.Tax.to_f %> | Tax<br>
+<%=@post.Tax.to_f %>% | Tax<br>
 
 <div id="divCheckbox" style="display: none;"> 
 <%=sum=0 %>
