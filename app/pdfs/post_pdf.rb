@@ -410,7 +410,7 @@ class PostPdf < Prawn::Document
 
   def clientnum
     bounding_box([bounds.right - 135, bounds.top - 150], :width => 100, :height => 30) do
-      text_box "No. #{@post.Clientnum.to_int} " ,:overflow => :truncate, size: 16, style: :bold
+      text_box "No. #{@post.Clientnum.to_i} " ,:overflow => :truncate, size: 16, style: :bold
       #transparent(0.5) { stroke_bounds }
     end 
   end

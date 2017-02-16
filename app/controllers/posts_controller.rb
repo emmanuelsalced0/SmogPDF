@@ -5,12 +5,10 @@
     @post = Post.new
   end
 
-  def edit
-    
+  def edit 
   end
   
   def update
-    
     if @post.update(article_params)
       
       flash[:notice] = "Post was successfully updated"
@@ -37,7 +35,7 @@
         pdf = PostPdf.new(@post, view_context)
         send_data pdf.render, 
           type: 'application/pdf', 
-          filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf",
+          filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf"
       end
     end
   end
