@@ -37,8 +37,7 @@
         pdf = PostPdf.new(@post, view_context)
         send_data pdf.render, 
           type: 'application/pdf', 
-          filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf",          
-          disposition: :inline
+          filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf",
       end
     end
   end
