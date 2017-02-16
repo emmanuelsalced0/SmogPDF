@@ -35,9 +35,10 @@
       format.html
       format.pdf do
         pdf = PostPdf.new(@post, view_context)
-        send_data pdf.render, filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf",
-                              type: "appplication/pdf",
-                              disposition: "inline"
+        send_data pdf.render, 
+          type: 'application/pdf', 
+          filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf",          
+          disposition: :inline
       end
     end
   end
