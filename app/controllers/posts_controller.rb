@@ -1,16 +1,16 @@
  class PostsController <ApplicationController
-
+  before_action :set_post, only: [:edit, :update, :show, :destroy]
 
   def new
     @post = Post.new
   end
 
   def edit
-    @post = Post.find(params[:id])
+    
   end
   
   def update
-    @post = Post.find(params[:id])
+    
     if @post.update(article_params)
       
       flash[:notice] = "Post was successfully updated"
@@ -21,7 +21,7 @@
   end
   
   def create
-    @post = Post.new(article_params)
+    @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "Post was successfully Created"
       redirect_to post_path(@post)
@@ -31,7 +31,6 @@
   end
 
   def show
-    @post = Post.find(params[:id])
     respond_to do |format|
       format.html
       format.pdf do
@@ -45,11 +44,21 @@
 
   def index
     @posts = Post.all
-    
   end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = "Post Was Deleted"
+    redirect_to posts_path
+  end  
+
  
   private
-    def article_params
+    def set_post
+      @post = Post.find(params[:id])
+    end
+
+    def post_params
       params.require(:post).permit(:Name, :Phone, :Adress, :Veh_Year, :Make, :Model, :LicPlate, :Miles, :VIN, :Visa, :MasterCard, :Discover, :Cash, :Pair, :Air, :Acl, :Tc_cac, :Efe, :Egr, :Can, :Cat, :Mil, :O2s, :Pcv, :Timing, :CASmog, :CAInsp, :VIN2, :CASmogCert, :PreInsp, :ReInsp, :EngCover, :Other, :Evap, :Est, :GasCap, :Mis, :Tax, :Clientnum)
     end 
 

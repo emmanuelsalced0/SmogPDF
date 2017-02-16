@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Recipt</title>
+<head>
+  <title>Recipt</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
-    <% flash.each do |name, msg|%>
-      <ul>
-          <li><%= msg %></li>
-      </ul>
-       
-    <% end %>
-    <%= yield %>
-  </body>
+<body>
+
+<%= render 'layouts/messages' %>
+<%= yield %>
+      
+</body>
 </html>

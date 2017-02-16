@@ -1,6 +1,6 @@
 <h1>Showing <%=@post.Name %>'s Post</h1>
 <h3>
-  No. <%= @post.Clientnum.to_int %> <br>
+  No. <%= @post.Clientnum.to_i %> <br>
   Name: <%= @post.Name %> <br>
   Phone: <%= @post.Phone %> <br>
   Address: <%= @post.Adress %> <br>
@@ -172,17 +172,15 @@ $ <%=@post.Mis.to_f.round(2) %> | Miscellaneous<br>
 <%=sum+=@post.GasCap.to_f %>
 <%=sum+=@post.Mis.to_f %>
 <%=tax=sum* @post.Tax.to_f%>
-
-  
-
 </div>
 $ <%=sum.round(2)%> | Total Without Tax<br>
 $ <%=(tax+sum).round(2)%> | Total With Tax<br>
 
-
-<%= link_to "Print (PDF)", post_path(@post, format: "pdf") %>
+<h2>
+<%= link_to "Print (PDF)", post_path(@post, format: "pdf") %> |
 
 <%= link_to "Edit this Post", edit_post_path(@post) %> |
 
 <%= link_to "Back to post listing", posts_path %>
+</h2>
 

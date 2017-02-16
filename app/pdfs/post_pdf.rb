@@ -403,7 +403,7 @@ class PostPdf < Prawn::Document
       text "Total Before Tax #{price(@post.Total)}", size: 16, style: :bold, :align => :right  
   end
   def totaltax
-      text "Total #{price(@post.TotalWtax)}", size: 16, style: :bold, :align => :right  
+      text "Total #{price(@post.TotalWtax)}", size: 20, style: :bold, :align => :right  
   end
 
 
