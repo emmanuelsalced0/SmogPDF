@@ -9,7 +9,7 @@
   end
   
   def update
-    if @post.update(article_params)
+    if @post.update(post_params)
       
       flash[:notice] = "Post was successfully updated"
       redirect_to post_path(@post)
