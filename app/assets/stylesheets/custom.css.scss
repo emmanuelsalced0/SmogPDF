@@ -17,6 +17,10 @@ $navbar-default-bg: black;
   text-decoration: none;
 }
 
+#line{
+   border-top: 1px solid #eaeaea;
+}
+
 .center{
   text-align: center;
 }
@@ -63,4 +67,70 @@ footer ul {
 float ul li{
   float: left;
   margin-left: 15px;
+}
+.im-centered{
+margin: auto; max-width: 300px;
+}
+
+.post-action{
+  border-top: 1px solid #eaeaea;
+  padding-top: 5px;
+}
+
+.description{
+  margin-top: 0;
+}
+
+.post-name{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.post-body{
+  border-top: 1px solid #eaeaea;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+
+
+
+
+
+
+.col-xs-1 {
+  padding: -1px;
+}
+.col-xs-2 {
+  padding: -1px;
+}
+.col-xs-3 {
+  padding: -1px;
+}
+.col-xs-4 {
+  padding: -1px;
+}
+.col-xs-5 {
+  padding: -1px;
+}
+.col-xs-6 {
+  padding: -1px;
+}
+.col-xs-7 {
+  padding: -1px;
+}
+.col-xs-8 {
+  padding: -1px;
+}
+.col-xs-9 {
+  padding: -1px;
+}
+.col-xs-10 {
+  padding: -1px;
+}
+.col-xs-11 {
+  padding: -1px;
+}
+.col-xs-12 {
+  padding: -1px;
 }

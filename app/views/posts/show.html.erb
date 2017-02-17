@@ -11,7 +11,7 @@
   Miles: <%= @post.Miles %> <br>
   V.I.N.: <%= @post.VIN %> <br>
 </h3>
-
+<hr>
 <h2>Payment Method:</h2>
 
 <h4>
@@ -21,127 +21,133 @@
     <% end %>
     <% if @post.Visa == "0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %> <br>
-    Paid With MasterCard
+    <% end %>
+    | Paid With MasterCard
     <% if @post.MasterCard=="1"%>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.MasterCard == "0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %> <br>
-    Paid With Discover
+    <% end %>
+    | Paid With Discover
     <% if @post.Discover == "1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %> 
     <% if @post.Discover == "0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %> <br>
-    Paid With Cash
+    <% end %>
+    | Paid With Cash
     <% if @post.Cash=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Cash == "0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %> <br>
+    <% end %> 
 </h4>
+<hr>
 
 <h4>
+  <p style="text-indent: 150px">
     PAIR 
     <% if @post.Pair=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Pair=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    AIR
+    | AIR
     <% if @post.Air=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Air=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    ACL
+    | ACL
     <% if @post.Acl=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Acl=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    TC/CAC
+    | TC/CAC
     <% if @post.Tc_cac=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Tc_cac=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    EFE
+    | EFE
     <% if @post.Efe=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Efe=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    EGR
+    | EGR
     <% if @post.Egr=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Egr=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
-
-    CAN
+    <% end %>
+    </p>
+    <p style="text-indent: 150px">
+     CAN
     <% if @post.Can=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Can=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    CAT
+    | CAT
     <% if @post.Cat=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Cat=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    MIL
+    | MIL
     <% if @post.Mil=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Mil=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    O2S
+    | O2S
     <% if @post.O2s=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.O2s=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    PCV
+    | PCV
     <% if @post.Pcv=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Pcv=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
-    <% end %><br>
+    <% end %>
 
-    Timing
+    | Timing
     <% if @post.Timing=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
     <% end %>
     <% if @post.Timing=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
     <% end %><br>
+  </p>
 </h4>
+<hr>
+<h3>
 
 $ <%=@post.CASmog.to_f.round(2) %> | California Smog Inspection<br>
 $ <%=@post.CAInsp.to_f.round(2) %> | California Smog Insp./ Heavy Duty Vehicles<br>
@@ -176,11 +182,16 @@ $ <%=@post.Mis.to_f.round(2) %> | Miscellaneous<br>
 $ <%=sum.round(2)%> | Total Without Tax<br>
 $ <%=(tax+sum).round(2)%> | Total With Tax<br>
 
+</h3>
+<hr>
 <h2>
-<%= link_to "Print (PDF)", post_path(@post, format: "pdf") %> |
+<div class="post_actions">
+    <%= link_to "Print (PDF)", post_path(@post, format: "pdf"), class: "btn btn-xs btn-primary" %> |
 
-<%= link_to "Edit this Post", edit_post_path(@post) %> |
+    <%= link_to "Edit this Post", edit_post_path(@post), class: "btn btn-xs btn-primary" %> |
 
-<%= link_to "Back to post listing", posts_path %>
+    <%= link_to "View All Posts", posts_path,class: "btn btn-xs btn-primary" %> |
+    <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-xs btn-primary" %>
+</div>
 </h2>
 

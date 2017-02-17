@@ -1,27 +1,27 @@
-<h1>Listing all Posts</h1>
-<td><%= link_to 'New Post', new_post_path %></td>
 
-<table>
-  <tr>
-      <th>No.</th>
-      <th>Name</th>
-      <th>Year</th>
-      <th>Make</th>
-      <th>Model</th>
-  </tr>
 
-  <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.Clientnum.to_i %></td>
-    <td><%= post.Name %></td>
-    <td><%= post.Veh_Year %></td>
-    <td><%= post.Make%></td>
-    <td><%= post.Model %></td>
 
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Show', post_path(post) %></td>
-    <td><%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you Sure?"} %></td>
+<h1 align="center">Listing all Posts</h1>
 
-  </tr>
+<% @posts.each do |post| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class = "post-name">
+          <%= link_to post.Name, post_path(post) %>
+        </div>
+        <div class="post-body">
+        <%= post.Veh_Year%> <%=post.Make%>, <%=post.Model %>
+        </div>
+        <div class="post_actions">
+          <%= link_to "Print (PDF)", post_path(post, format: "pdf"), class: "btn btn-xs btn-primary" %> |
+          <%= link_to "Edit this Post", edit_post_path(post), class: "btn btn-xs btn-primary" %> |
+          <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-xs btn-primary" %>
+        </div>
+        <div class="created at">
+          <%= post.created_at%>
+        </div>
+      </div>
+    </div>
+  </div>
   <% end %>
-</table>

@@ -1,96 +1,249 @@
-<%= form_for @post do |f| %>
-    <%= f.label(:Clientnum, "No.") %><br>
-    <%= f.text_field :Clientnum %><br>
-    <%= f.label :Name %><br>
-    <%= f.text_field :Name %><br>
-    <%= f.label :Phone %> <br>
-    <%= f.text_field :Phone %><br>
-    <%= f.label :Adress %> <br>
-    <%= f.text_field :Adress %><br>
-    <%= f.label(:Veh_Year, "Veh/Year")   %> <br>
-    <%= f.text_field :Veh_Year %><br>
-    <%= f.label :Make %> <br>
-    <%= f.text_field :Make %><br>
-    <%= f.label :Model  %> <br>
-    <%= f.text_field :Model %><br>
-    <%= f.label(:LicPlate, "License Plate") %> <br>
-    <%= f.text_field :LicPlate %><br>
-    <%= f.label :Miles %> <br>
-    <%= f.text_field :Miles %><br>
-    <%= f.label(:VIN, "VIN") %> <br>
-    <%= f.text_field :VIN %>
-  </p>
+<%= form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+    <div class='row', align="center">
+        <div class="col-xs-3 form-group">
+            <%= f.label(:Clientnum, "No.") %>
+            <%= f.text_field :Clientnum, class: "form-control", placeholder: "Number of Client", autofocus: true %>
+        </div>
+    </div>    
+    <div class='row', align="center">
+        <div class="col-xs-6 form-group", align="center">
+            <%= f.label(:Name) %>
+            <%= f.text_field :Name, class: "form-control", placeholder: "Enter Name Here", autofocus: true %> 
+        </div>
+        <div class="col-xs-6 form-group", align="center">
+                 <%= f.label(:Phone) %>
+                <%= f.text_field :Phone, class: "form-control", placeholder: "Enter Phone Number Here", autofocus: true %>
+        </div>
 
-<h3>Payment Method</h3>
-  <p>
-  
-    <%= f.label :Visa %> 
-    <%= f.check_box :Visa%> <br />
-    <%= f.label :MasterCard %>
-    <%= f.check_box :MasterCard %> <br />
-    <%= f.label :Discover %>
-    <%= f.check_box :Discover%> <br />
-    <%= f.label :Cash %>
-    <%= f.check_box :Cash%> <br />
-  </p>
-  <p>
-    <%= f.label(:Pair,"PAIR")%> 
-    <%= f.check_box :Pair %> <br />
-    <%= f.label(:Air,"AIR")%> 
-    <%= f.check_box :Air %> <br />
-    <%= f.label(:Acl,"ACL")%> 
-    <%= f.check_box :Acl%> <br />
-    <%= f.label(:Tc_cac,"TC/CAC")%> 
-    <%= f.check_box :Tc_cac%> <br />
-    <%= f.label(:Efe,"EFE")%> 
-    <%= f.check_box :Efe %> <br />
-    <%= f.label(:Egr,"EGR")%> 
-    <%= f.check_box :Egr%> <br />
-    <%= f.label(:Can,"CAN")%> 
-    <%= f.check_box :Can%> <br />
-    <%= f.label(:Cat,"CAT")%> 
-    <%= f.check_box :Cat%> <br />
-    <%= f.label(:Mil,"MIL")%> 
-    <%= f.check_box :Mil%> <br />
-    <%= f.label(:O2s,"O2S")%> 
-    <%= f.check_box :O2s%> <br />
-    <%= f.label(:Pcv,"PCV")%> 
-    <%= f.check_box :Pcv%> <br />
-    <%= f.label :Timing%> 
-    <%= f.check_box :Timing%> <br />
-</p>
+         <div class="col-xs-12 form-group", align="center">
+                 <%= f.label(:Adress, "Address") %>
+                <%= f.text_field :Adress, class: "form-control", placeholder: "Enter Address Here", autofocus: true %>
+        </div>
 
-<H3>Fees:</H3>
-  <p>
-   <%= f.label(:CASmog, "California Smog Inspection") %> <br>
-    <%= f.text_field :CASmog %><br>
-    <%= f.label(:CAInsp, "California Smog Insp./ Heavy Duty Vehicles") %> <br>
-    <%= f.text_field :CAInsp %><br>
-    <%= f.label(:VIN2, "VIN") %> <br>
-    <%= f.text_field :VIN2 %><br>
-    <%= f.label(:CASmogCert, "California Smog Certificate") %> <br>
-    <%= f.text_field :CASmogCert %><br>
-    <%= f.label(:PreInsp, "Pre-Inspection") %> <br>
-    <%= f.text_field :PreInsp %><br>
-    <%= f.label(:ReInsp, "Re-Inspection") %> <br>
-    <%= f.text_field :ReInsp %><br>
-    <%= f.label(:EngCover, "Remove Eng. Cover (If Needed) Vans") %> <br>
-    <%= f.text_field :EngCover %><br>
-    <%= f.label(:Other, "Other") %> <br>
-    <%= f.text_field :Other %><br>
-    <%= f.label(:Evap, "Evap. Test") %> <br>
-    <%= f.text_field :Evap %><br>
-    <%= f.label(:Est, "Estimates") %> <br>
-    <%= f.text_field :Est %><br>
-    <%= f.label(:GasCap, "Gas Cap(s)") %> <br>
-    <%= f.text_field :GasCap %><br>
-    <%= f.label(:Mis, "Miscellaneous") %> <br>
-    <%= f.text_field :Mis %><br>
-    <%= f.label(:Tax, "Tax") %> <br>
-    <%= f.text_field :Tax %>
-  </p>
+        <div class="col-xs-3 form-group", align="center">
+                 <%= f.label(:Veh_Year, "Veh/Year") %>
+                <%= f.text_field :Veh_Year, class: "form-control", placeholder: "Enter Vehicle Year", autofocus: true %>
+        </div>
+        <div class="col-xs-5 form-group", align="center">
+                 <%= f.label(:Make) %>
+                <%= f.text_field :Make, class: "form-control", placeholder: "Enter Make Here", autofocus: true %>
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+        </div>
+        <div class="col-xs-4 form-group", align="center">
+                 <%= f.label(:Model) %>
+                <%= f.text_field :Model, class: "form-control", placeholder: "Enter Model Here", autofocus: true %>
+        </div>
+
+        <div class="col-xs-9 form-group", align="center">
+                 <%= f.label(:LicPlate,"License Plate") %>
+                <%= f.text_field :LicPlate, class: "form-control", placeholder: "Enter License Plate Here", autofocus: true %>
+        </div>
+
+        <div class="col-xs-3 form-group", align="center">
+                 <%= f.label(:Miles) %>
+                <%= f.text_field :Miles, class: "form-control", placeholder: "Enter Miles Here", autofocus: true %>
+        </div>
+
+        <div class="col-xs-12 form-group", align="center">
+                 <%= f.label(:VIN, "V.I.N.") %>
+                <%= f.text_field :VIN, class: "form-control", placeholder: "Enter VIN Here", autofocus: true %>
+        </div>
+
+      </div>  
+        <div>
+        <h3 align="center"> Payment Method</h3>
+                <div class="col-sm-3", align="center">
+                    <%= f.check_box :Visa %>
+                    <%= f.label :Visa%>
+                </div>
+                <div class="col-sm-3", align="center">
+                    <%= f.check_box :Discover %>
+                    <%= f.label :Discover%>
+                </div>
+                <div class="col-sm-3", align="center">
+                    <%= f.check_box :MasterCard %>
+                    <%= f.label :MasterCard, "MasterCard"%>
+                </div>
+                <div class="col-sm-3", align="center">
+                    <%= f.check_box :Cash %>
+                    <%= f.label :Cash%>
+                </div>
+            </div>
+
+
+            <div>
+            <h3 align="center">_________________________________________________</h3>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Pair %>
+                    <%= f.label(:Pair,"PAIR")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Air %>
+                    <%= f.label(:Air,"AIR")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Acl%>
+                    <%= f.label(:Acl,"ACL")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Tc_cac%>
+                    <%= f.label(:Tc_cac,"TC/CAC")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Efe %>
+                    <%= f.label(:Efe,"EFE")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Egr%>
+                    <%= f.label(:Egr,"EGR")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Can%>
+                    <%= f.label(:Can,"CAN")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Cat%>
+                    <%= f.label(:Cat,"CAT")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Mil%>
+                    <%= f.label(:Mil,"MIL")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :O2s%>
+                    <%= f.label(:O2s,"O2S")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Pcv%>
+                    <%= f.label(:Pcv,"PCV")%> 
+                </div>
+
+                <div class="col-sm-2", align="center">
+                    <%= f.check_box :Timing%>
+                    <%= f.label :Timing%>
+                </div>
+            </div>
+    
+        <h3 align="center">_________________________________________________</h3>
+
+        <h3 align="center">Fees:</h3>
+
+        <div class='row im-centered'>
+           <div class="col-xs-15 form-group", align="center">
+                <%= f.label(:CASmog, "California Smog Inspection") %>
+                <%= f.text_field :CASmog, class: "form-control", placeholder: "California Smog Inspection", autofocus: true %>
+            </div>
+        </div>
+           
+        <div class='row im-centered', align="left">
+           <div class="col-xs-15 form-group", align="center">
+                <%= f.label(:CAInsp, "California Smog Insp./ Heavy Duty Vehicles") %>
+                <%= f.text_field :CAInsp, class: "form-control", placeholder: "California Smog Insp./ Heavy Duty Vehicles", autofocus: true %>
+            </div>
+        </div>
+        <div class='row im-centered', align="left">
+            <div class="col-xs-15 form-group", align="center">
+                <%= f.label(:VIN2, "VIN") %>
+                <%= f.text_field :VIN2, class: "form-control", placeholder: "VIN", autofocus: true %>
+            </div>
+        </div>
+
+        <div class='row im-centered', align="left"> 
+           <div class="col-xs-15 form-group", align="center">
+                <%= f.label(:CASmogCert, "California Smog Certificate") %>
+                <%= f.text_field :CASmogCert, class: "form-control", placeholder: "California Smog Certificate", autofocus: true %>
+            </div>
+        </div>
+
+        <div class='row im-centered', align="left">
+          <div class="col-xs-15 form-group", align="center">
+                <%= f.label(:PreInsp, "Pre-Inspection") %>
+                <%= f.text_field :PreInsp, class: "form-control", placeholder: "Pre-Inspection", autofocus: true %>
+            </div>
+        </div>
+
+        <div class='row im-centered', align="left">   
+           <div class="col-xs-15 form-group", align="center">
+                <%= f.label(:ReInsp, "Re-Inspection") %>
+                <%= f.text_field :ReInsp, class: "form-control", placeholder: "Re-Inspection", autofocus: true %>
+            </div>
+        </div>
+
+
+        <div class='row im-centered', align="left">   
+           <div class="col-xs-15 form-group", align="center">
+                 <%= f.label(:EngCover, "Remove Eng. Cover (If Needed) Vans") %>
+                <%= f.text_field :EngCover, class: "form-control", placeholder: "Eng. Cover", autofocus: true %>
+            </div>
+        </div>
+
+         <div class='row im-centered', align="left">   
+           <div class="col-xs-15 form-group", align="center">
+                 <%= f.label(:Other, "Other") %>
+                <%= f.text_field :Other, class: "form-control", placeholder: "Other", autofocus: true %>
+            </div>
+        </div>
+            
+         <div class='row im-centered', align="left">   
+           <div class="col-xs-15 form-group", align="center">
+                 <%= f.label(:Evap, "Evap.Test") %>
+                <%= f.text_field :EngCover, class: "form-control", placeholder: "Evap. Test", autofocus: true %>
+            </div>
+        </div>
+            
+
+        <div class='row im-centered', align="left">   
+           <div class="col-xs-15 form-group", align="center">
+                 <%= f.label(:Est, "Estimates") %>
+                <%= f.text_field :Est, class: "form-control", placeholder: "Estimates", autofocus: true %>
+            </div>
+        </div>
+
+         <div class='row im-centered', align="left">   
+           <div class="col-xs-15 form-group", align="center">
+                 <%= f.label(:GasCap, "Gas Cap(s)") %>
+                <%= f.text_field :GasCap, class: "form-control", placeholder: "GasCap", autofocus: true %>
+            </div>
+        </div>
+
+         <div class='row im-centered', align="left">   
+           <div class="col-xs-15 form-group", align="center">
+                 <%= f.label(:Mis, "Miscellaneous") %>
+                <%= f.text_field :Mis, class: "form-control", placeholder: "Miscellaneous", autofocus: true %>
+            </div>
+        </div>
+
+         <div class='row im-centered'>   
+           <div class="col-xs-15 form-group", align="center">
+                 <%= f.label(:Tax, "% Tax") %>
+                <%= f.text_field :Tax, class: "form-control", placeholder: "Tax", autofocus: true %>
+            </div>
+        </div>
+
+
+
+ 
+
+            
+         <div class='row im-centered', align="center">
+          <div class="form-group ">
+            <div class="col-sm-20">
+                <%= f.submit class: 'btn btn-primary btn-lg' %>
+            </div>
+            
+        </div>
+        </div>
+        <% end %>
+    
+</div>

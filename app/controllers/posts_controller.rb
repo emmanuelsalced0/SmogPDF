@@ -3,22 +3,29 @@
 
   def new
     @post = Post.new
+    @notindex=true
   end
 
-  def edit 
+  def edit
+    @notindex=true
   end
   
   def update
+    @notindex=true
     if @post.update(post_params)
       
       flash[:notice] = "Post was successfully updated"
       redirect_to post_path(@post)
+      
     else
       render 'edit'
+      
     end
+
   end
   
   def create
+    @notindex=true
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "Post was successfully Created"
@@ -29,6 +36,7 @@
   end
 
   def show
+    @notindex=true
     respond_to do |format|
       format.html
       format.pdf do
@@ -41,9 +49,13 @@
   end
 
   def index
-    @posts = Post.all
-  end
 
+    @posts = Post.search(params[:search])
+
+    @index=true
+
+  end
+   
   def destroy
     @post.destroy
     flash[:notice] = "Post Was Deleted"

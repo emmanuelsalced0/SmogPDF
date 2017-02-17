@@ -4,12 +4,16 @@ class PostPdf < Prawn::Document
     
     @post = post
     @view= view
+    
     image "#{Rails.root}/images/header.jpg", :width => bounds.width, :height => 186, :hposition => :center 
     image "#{Rails.root}/images/footer.jpg", :at => [0,80], :width => bounds.width, :height => 108, :hposition => :center   
     client_info
     payment
     checks
     billing
+    date
+
+    
 
 
     
@@ -446,5 +450,10 @@ class PostPdf < Prawn::Document
     @post.TotalWtax = tax  
   end
 
+  def date
+    bounding_box([bounds.right-78, 17 ], :width => 100, :height => 12) do
+      text_box "#{@post.created_at} " ,:overflow => :truncate, size: 12, style: :bold
+    end
+end
 
 end
