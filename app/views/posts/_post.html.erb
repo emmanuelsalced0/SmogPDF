@@ -7,7 +7,7 @@
         </div>
         <div class="post-body">
         <%= post.Veh_Year%> <%=post.Make%>, <%=post.Model %>
-        <div class="article-meta-details">
+        <div class="post-meta-details">
           <small>Created by: <%= post.user.username if post.user%>,
           <%= time_ago_in_words(post.created_at) %> ago</small>
 

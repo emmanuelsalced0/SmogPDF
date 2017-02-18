@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
   before_action :set_notindex
+  
   def new
     @notindex=true
     @user = User.new
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the SmogApp #{@user.username}"
-    redirect_to posts_path
+    redirect_to user_path(@user)
     else
     render 'new'
     end
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-     
+     @user_posts = @user.posts.all
   end
 
 
@@ -37,6 +38,13 @@ class UsersController < ApplicationController
   end  
 
   def edit    
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:danger] = "User and all articles created by user have been deleted"
+    redirect_to users_path
   end
   
   private
