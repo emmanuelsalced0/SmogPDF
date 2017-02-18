@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_notindex
   def new
-  @notindex=true
+    @notindex=true
     @user = User.new
   end
 
@@ -17,22 +18,38 @@ class UsersController < ApplicationController
   end
 
   def index
-       @notindex=true 
-
+    @notindex=true 
     @users = User.all
-
   end
 
   def show
-       @notindex=true 
-
-    @user = User.find(params[:id])
+     
   end
-  private
 
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Your account was updated successfully"
+      redirect_to posts_path
+    else
+      render 'edit'
+    end
+  end  
+
+  def edit    
+  end
+  
+  private
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def set_notindex
+    @notindex=true
+  end
 end
 
