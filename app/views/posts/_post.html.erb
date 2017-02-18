@@ -13,11 +13,13 @@
 
         </div>
         </div>
+        <% if logged_in? && current_user == post.user %>
         <div class="post_actions">
           <%= link_to "Print (PDF)", post_path(post, format: "pdf"), class: "btn btn-xs btn-primary" %> |
           <%= link_to "Edit this Post", edit_post_path(post), class: "btn btn-xs btn-primary" %> |
           <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-xs btn-primary" %>
         </div>
+        <%end%>
         <div class="created at">
           <%= post.created_at%>
         </div>

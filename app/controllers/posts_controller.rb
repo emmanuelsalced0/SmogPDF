@@ -11,7 +11,7 @@
   
   def update
     if @post.update(post_params)
-      flash[:notice] = "Post was successfully updated"
+      flash[:sucess] = "Post was successfully updated"
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -20,8 +20,9 @@
   
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
-      flash[:notice] = "Post was successfully Created"
+      flash[:sucess] = "Post was successfully Created"
       redirect_to post_path(@post)
     else
       render 'new'
