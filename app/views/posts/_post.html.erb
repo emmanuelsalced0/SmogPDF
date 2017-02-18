@@ -1,0 +1,28 @@
+<% obj.each do |post| %>
+ <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class = "post-name">
+          <%= link_to post.Name, post_path(post) %>
+        </div>
+        <div class="post-body">
+        <%= post.Veh_Year%> <%=post.Make%>, <%=post.Model %>
+        <div class="article-meta-details">
+          <small>Created by: <%= post.user.username if post.user%>,
+          <%= time_ago_in_words(post.created_at) %> ago</small>
+
+        </div>
+        </div>
+        <div class="post_actions">
+          <%= link_to "Print (PDF)", post_path(post, format: "pdf"), class: "btn btn-xs btn-primary" %> |
+          <%= link_to "Edit this Post", edit_post_path(post), class: "btn btn-xs btn-primary" %> |
+          <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-xs btn-primary" %>
+        </div>
+        <div class="created at">
+          <%= post.created_at%>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <% end %>

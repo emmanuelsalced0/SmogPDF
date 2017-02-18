@@ -15,7 +15,7 @@ def self.search(search)
     where(['vin LIKE ?', "%#{search}%"])
     where(['licplate LIKE ?', "%#{search}%"])
   else
-    all  
+    order('created_at DESC')  
   end
 end
 
