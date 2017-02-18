@@ -9,6 +9,11 @@
         </div>
         <div class="post-body">
         <%= post.Veh_Year%> <%=post.Make%>, <%=post.Model %>
+        <div class="article-meta-details">
+          <small>Created by: <%= post.user.username if post.user%>,
+          <%= time_ago_in_words(post.created_at) %> ago</small>
+
+        </div>
         </div>
         <div class="post_actions">
           <%= link_to "Print (PDF)", post_path(post, format: "pdf"), class: "btn btn-xs btn-primary" %> |

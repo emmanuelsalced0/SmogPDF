@@ -25,6 +25,7 @@
   def create
     @notindex=true
     @post = Post.new(post_params)
+    @post.user = User.first
     if @post.save
       flash[:notice] = "Post was successfully Created"
       redirect_to post_path(@post)
