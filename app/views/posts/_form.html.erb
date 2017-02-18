@@ -1,4 +1,15 @@
+<% if @post.errors.any? %>
+    <h2>The following errors prevented the article from getting created</h2>
+    <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+
 <%= form_for(@post, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
     <div class='row', align="center">
         <div class="col-xs-3 form-group">
             <%= f.label(:Clientnum, "No.") %>

@@ -13,10 +13,11 @@
     <%= render 'layouts/navigation' unless @index%>
     <%= render 'layouts/indexnav' unless @notindex%>
 
-    <%= render 'layouts/messages' %>
 
 <div class="container">
-  <%= yield%>
+  <%= render 'layouts/messages'%>
+  <%= yield %>
+
 </div>  
 
 <%= render 'layouts/footer' %>

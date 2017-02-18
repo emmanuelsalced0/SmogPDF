@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+  validates :Name, presence: true, length: {minimum: 5}
+  validates :Phone, presence: true, length: {minimum: 10, maximum: 15}
+  validates :Phone, presence: true, length: {minimum: 10, maximum: 15}
+  
 def self.search(search)
   if search
     where(['name LIKE ?', "%#{search}%"])
