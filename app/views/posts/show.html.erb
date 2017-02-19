@@ -1,22 +1,5 @@
-<h1>Showing <%=@post.Name %>'s Post</h1>
-
+<h1>Showing <%=@post.Name %>'s Smog Check</h1>
 <div class="well col-xs-8 col-xs-offset-2">
-  <% if @post.user %>
-    <ul class="listing">
-      <div class="row center">
-        <div class="col-md-4 col-md-offset-4">
-          <li>Created by:</li>
-          <li><%= link_to gravatar_for(@post.user), user_path(@post.user) %></li>
-          <li class="post-name">
-            <%= link_to @post.user.username, user_path(@post.user) %>
-          </li>
-          <li><small>
-            <%= pluralize(@post.user.posts.count, "posts") if @post.user.posts %>
-          </small></li>
-        </div>
-      </div>
-    </ul>
-  <% end %>
 
 <h3>
   No. <%= @post.Clientnum.to_i %> <br>
@@ -168,42 +151,42 @@
 <hr>
 <h3>
 
-$ <%=@post.CASmog.to_f.round(2) %> | California Smog Inspection<br>
-$ <%=@post.CAInsp.to_f.round(2) %> | California Smog Insp./ Heavy Duty Vehicles<br>
-$ <%=@post.VIN2.to_f.round(2) %> | VIN<br>
-$ <%=@post.CASmogCert.to_f.round(2) %> | California Smog Certificate<br>
-$ <%=@post.PreInsp.to_f.round(2) %> | Pre-Inspection<br>
-$ <%=@post.ReInsp.to_f.round(2) %> | Re-Inspection<br>
-$ <%=@post.EngCover.to_f.round(2) %> | Remove Eng. Cover (If Needed) Vans<br>
-$ <%=@post.Other.to_f.round(2) %> | Other<br>
-$ <%=@post.Evap.to_f.round(2) %> | Evap. Test<br>
-$ <%=@post.Est.to_f.round(2) %> | Estimates<br>
-$ <%=@post.GasCap.to_f.round(2) %> | Gas Cap(s)<br>
-$ <%=@post.Mis.to_f.round(2) %> | Miscellaneous<br>
-<%=@post.Tax.to_f %>% | Tax<br>
+    $ <%=@post.CASmog.to_f.round(2) %> | California Smog Inspection<br>
+    $ <%=@post.CAInsp.to_f.round(2) %> | California Smog Insp./ Heavy Duty Vehicles<br>
+    $ <%=@post.VIN2.to_f.round(2) %> | VIN<br>
+    $ <%=@post.CASmogCert.to_f.round(2) %> | California Smog Certificate<br>
+    $ <%=@post.PreInsp.to_f.round(2) %> | Pre-Inspection<br>
+    $ <%=@post.ReInsp.to_f.round(2) %> | Re-Inspection<br>
+    $ <%=@post.EngCover.to_f.round(2) %> | Remove Eng. Cover (If Needed) Vans<br>
+    $ <%=@post.Other.to_f.round(2) %> | Other<br>
+    $ <%=@post.Evap.to_f.round(2) %> | Evap. Test<br>
+    $ <%=@post.Est.to_f.round(2) %> | Estimates<br>
+    $ <%=@post.GasCap.to_f.round(2) %> | Gas Cap(s)<br>
+    $ <%=@post.Mis.to_f.round(2) %> | Miscellaneous<br>
+    <%=@post.Tax.to_f %>% | Tax<br>
 
-<div id="divCheckbox" style="display: none;"> 
-<%=sum=0 %>
-<%=sum+=@post.CASmog.to_f %>
-<%=sum+=@post.CAInsp.to_f %>
-<%=sum+=@post.VIN2.to_f %>
-<%=sum+=@post.CASmogCert.to_f %>
-<%=sum+=@post.PreInsp.to_f %>
-<%=sum+=@post.ReInsp.to_f %>
-<%=sum+=@post.EngCover.to_f %>
-<%=sum+=@post.Other.to_f %>
-<%=sum+=@post.Evap.to_f %>
-<%=sum+=@post.Est.to_f %>
-<%=sum+=@post.GasCap.to_f %>
-<%=sum+=@post.Mis.to_f %>
-<%=tax=sum* @post.Tax.to_f%>
-</div>
-$ <%=sum.round(2)%> | Total Without Tax<br>
-$ <%=(tax+sum).round(2)%> | Total With Tax<br>
+    <div id="divCheckbox" style="display: none;"> 
+    <%=sum=0 %>
+    <%=sum+=@post.CASmog.to_f %>
+    <%=sum+=@post.CAInsp.to_f %>
+    <%=sum+=@post.VIN2.to_f %>
+    <%=sum+=@post.CASmogCert.to_f %>
+    <%=sum+=@post.PreInsp.to_f %>
+    <%=sum+=@post.ReInsp.to_f %>
+    <%=sum+=@post.EngCover.to_f %>
+    <%=sum+=@post.Other.to_f %>
+    <%=sum+=@post.Evap.to_f %>
+    <%=sum+=@post.Est.to_f %>
+    <%=sum+=@post.GasCap.to_f %>
+    <%=sum+=@post.Mis.to_f %>
+    <%=tax=sum* @post.Tax.to_f%>
+    </div>
+    $ <%=sum.round(2)%> | Total Without Tax<br>
+    $ <%=(tax+sum).round(2)%> | Total With Tax<br>
 
 </h3>
 <hr>
-<h2>
+
 <div class="post_actions">
     <%= link_to "Print (PDF)", post_path(@post, format: "pdf"), class: "btn btn-xs btn-primary" %> |
 
@@ -212,6 +195,26 @@ $ <%=(tax+sum).round(2)%> | Total With Tax<br>
     <%= link_to "View All Posts", posts_path,class: "btn btn-xs btn-primary" %> |
     <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: "Are you Sure?"}, class: "btn btn-xs btn-primary" %>
 </div>
-</h2>
 </div>
+</h2>
+<div class="well col-xs-8 col-xs-offset-2">
+  <% if @post.user %>
+    <ul class="listing">
+      <div class="row center">
+        <div class="col-md-4 col-md-offset-4">
+          <li>Created by:</li>
+          <li><%= link_to gravatar_for(@post.user), user_path(@post.user) %></li>
+          <li class="post-name">
+            <%= link_to @post.user.username, user_path(@post.user) %>
+          </li>
+          <li><small>
+            <%= pluralize(@post.user.posts.count, "posts") if @post.user.posts %>
+          </small></li>
+        </div>
+      </div>
+    </ul>
+  <% end %>
+  </div>
+
+
 

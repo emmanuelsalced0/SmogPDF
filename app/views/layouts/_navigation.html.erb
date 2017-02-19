@@ -19,8 +19,8 @@
        
       <ul class="nav navbar-nav">
       <% if logged_in? %>
-        <li><%= link_to "Posts", posts_path%></li>
-        <li><%= link_to "New Post", new_post_path%></li>
+        <li><%= link_to "List Smog Checks", posts_path%></li>
+        <li><%= link_to "New Smog Checks", new_post_path%></li>
         <% else %>
         <li><%= link_to "Posts", posts_path%></li>
         
@@ -36,9 +36,6 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Profile<span class="caret"></span></a>            <ul class="dropdown-menu">
               <li><%= link_to "Edit your profile", edit_user_path(current_user) %></li>
               <li><%= link_to "View your profile", user_path(current_user) %></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
             </ul>
           </li>
         <% else %>

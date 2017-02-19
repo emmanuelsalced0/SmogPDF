@@ -17,10 +17,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       <% if logged_in? %>
-        <li><%= link_to "Posts", posts_path%></li>
-        <li><%= link_to "New Post", new_post_path%></li>
+        <li><%= link_to "List Smog Check", posts_path%></li>
+        <li><%= link_to "New Smog Check", new_post_path%></li>
         <% else %>
-        <li><%= link_to "Posts", posts_path%></li>
+        <li><%= link_to "List Smog Checks", posts_path%></li>
       <% end %>
       </ul>
 
@@ -39,9 +39,6 @@
        <ul class="dropdown-menu">
           <li><%= link_to "Edit your profile", edit_user_path(current_user) %></li>
           <li><%= link_to "View your profile", user_path(current_user) %></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
 
           </ul>
 

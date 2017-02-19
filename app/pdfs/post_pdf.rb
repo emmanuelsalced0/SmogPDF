@@ -12,12 +12,6 @@ class PostPdf < Prawn::Document
     checks
     billing
     date
-
-    
-
-
-    
-
   end
 
   def client_info
@@ -421,7 +415,7 @@ class PostPdf < Prawn::Document
 
 
   def price(num)
-    @view.number_to_currency(num)
+    @view.number_to_currency(num.to_i)
   end
 
   def box
@@ -445,9 +439,12 @@ class PostPdf < Prawn::Document
     sum+=@post.Est.to_f 
     sum+=@post.GasCap.to_f 
     sum+=@post.Mis.to_f 
-    tax=sum* @post.Tax.to_f
+
+    tax=sum * @post.Tax.to_f
+
     @post.Total = sum 
-    @post.TotalWtax = tax  
+
+    @post.TotalWtax = sum + tax  
   end
 
   def date
