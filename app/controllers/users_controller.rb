@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def show
-     @user_posts = @user.posts.all
+     @posts = @user.posts.all.paginate(page: params[:page], per_page: 10)
   end
 
 

@@ -359,7 +359,7 @@ class PostPdf < Prawn::Document
   end
 
   def cainsp
-    text "California Smog Insp./ Heavy Duty Vehicles #{price(@post.CAInsp)}", size: 16, style: :bold, :align => :right
+    text "California Smog Insp./ Heavy Duty Vehicles: #{price(@post.CAInsp)}", size: 16, style: :bold, :align => :right
   end
 
   def vin2
@@ -383,25 +383,25 @@ class PostPdf < Prawn::Document
      text "Other: #{@post.Other}", size: 16, style: :bold, :align => :right  
   end
   def evap
-      text "Evap. Test #{@post.Evap}", size: 16, style: :bold, :align => :right  
+      text "Evap. Test: #{@post.Evap}", size: 16, style: :bold, :align => :right  
   end
   def est
       text "Estimates #{price(@post.Est)}", size: 16, style: :bold , :align => :right 
   end
   def gascap
-      text "Gas Cap(s) #{@post.GasCap}", size: 16, style: :bold, :align => :right  
+      text "Gas Cap(s): #{@post.GasCap}", size: 16, style: :bold, :align => :right  
   end
   def mis
-      text "Miscellaneous #{@post.Mis}", size: 16, style: :bold, :align => :right  
+      text "Miscellaneous: #{@post.Mis}", size: 16, style: :bold, :align => :right  
   end
   def tax
-      text "Tax #{price(@post.TotalWtax-@post.Total)}", size: 16, style: :bold, :align => :right  
+      text "Tax: #{price(@post.TotalWtax-@post.Total)}", size: 16, style: :bold, :align => :right  
   end
   def total
-      text "Total Before Tax #{price(@post.Total)}", size: 16, style: :bold, :align => :right  
+      text "Total Before Tax: #{price(@post.Total)}", size: 16, style: :bold, :align => :right  
   end
   def totaltax
-      text "Total #{price(@post.TotalWtax)}", size: 20, style: :bold, :align => :right  
+      text "Total: #{price(@post.TotalWtax)}", size: 20, style: :bold, :align => :right  
   end
 
 
