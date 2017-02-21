@@ -1,6 +1,6 @@
  class PostsController <ApplicationController
   before_action :set_post, only: [:edit, :update, :show, :destroy]
-  before_action :set_notindex, only: [:new,:edit, :update, :create, :show, :destroy]
+  before_action :set_notindex, only: [:new,:edit, :update, :create, :show, :destroy, :index]
   
   def new
     @post = Post.new
@@ -42,8 +42,7 @@
   end
 
   def index
-    @posts = Post.search(params[:search])
-    @index=true
+    @posts = Post.all.paginate(page: params[:page], per_page: 3)
   end
    
   def destroy
