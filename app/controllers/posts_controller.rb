@@ -1,7 +1,7 @@
  class PostsController <ApplicationController
   before_action :set_post, only: [:edit, :update, :show, :destroy]
   before_action :set_notindex, only: [:new,:edit, :update, :create, :show, :destroy, :index]
-  
+
   def new
     @post = Post.new
   end
@@ -11,6 +11,7 @@
   
   def update
     if @post.update(post_params)
+      set_clientnum
       flash[:sucess] = "Post was successfully updated"
       redirect_to post_path(@post)
     else
@@ -21,6 +22,7 @@
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    set_clientnum
     if @post.save
       flash[:sucess] = "Post was successfully Created"
       redirect_to post_path(@post)
@@ -30,6 +32,7 @@
   end
 
   def show
+    set_clientnum
     respond_to do |format|
       format.html
       format.pdf do
@@ -64,6 +67,11 @@
     def set_notindex
     @notindex=true
     end
+
+    def set_clientnum
+      id = @post.id
+      @post.Clientnum= id.to_i + 2006
+    end 
 
 
 end
