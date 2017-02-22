@@ -22,9 +22,9 @@
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    set_clientnum
     if @post.save
       flash[:sucess] = "Post was successfully Created"
+
       redirect_to post_path(@post)
     else
       render 'new'
@@ -32,7 +32,7 @@
   end
 
   def show
-    set_clientnum
+    set_clientnum(@post.user)
     respond_to do |format|
       format.html
       format.pdf do
@@ -68,9 +68,9 @@
     @notindex=true
     end
 
-    def set_clientnum
+    def set_clientnum(user)
       id = @post.id
-      @post.Clientnum= id.to_i + 2006
+      @post.Clientnum= id.to_i + user.number.to_i
     end 
 
 
