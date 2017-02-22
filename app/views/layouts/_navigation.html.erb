@@ -21,10 +21,6 @@
       <% if logged_in? %>
         <li><%= link_to "List Smog Checks", posts_path%></li>
         <li><%= link_to "New Smog Checks", new_post_path%></li>
-        <% else %>
-        <li><%= link_to "Posts", posts_path%></li>
-        
-      
       <% end %>
       </ul>
 
