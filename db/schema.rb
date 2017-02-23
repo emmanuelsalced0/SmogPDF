@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222014914) do
+ActiveRecord::Schema.define(version: 20170223065733) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "Name"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20170222014914) do
     t.string   "O2s"
     t.string   "Pcv"
     t.string   "Timing"
-    t.string   "CASmog",     default: "0"
+    t.string   "CASmog",     default: "51.75"
     t.string   "CAInsp",     default: "0"
     t.string   "VIN2",       default: "0"
-    t.string   "CASmogCert", default: "0"
+    t.string   "CASmogCert", default: "8.25"
     t.string   "PreInsp",    default: "0"
     t.string   "ReInsp",     default: "0"
     t.string   "EngCover",   default: "0"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20170222014914) do
     t.string   "Est",        default: "0"
     t.string   "GasCap",     default: "0"
     t.string   "Mis",        default: "0"
-    t.string   "Tax",        default: "0.0975"
+    t.string   "Tax",        default: "0"
     t.float    "TotalWtax"
     t.float    "Total"
     t.float    "Clientnum"

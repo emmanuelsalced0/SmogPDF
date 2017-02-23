@@ -1,5 +1,5 @@
 <h1>Showing <%=@post.Name %>'s Smog Check</h1>
-<div class="well col-xs-8 col-xs-offset-2">
+<div class="well col-xs-10 col-xs-offset-1">
 
 <h3>
   No. <%= @post.Clientnum.to_i %> <br>
@@ -16,7 +16,7 @@
 <hr>
 <h2>Payment Method:</h2>
 
-<h4>
+<h4 align="center">
     Paid With Visa
     <% if @post.Visa == "1" %>
       <span style="font-family:Wingdings">&#163;</span>
@@ -49,7 +49,7 @@
 <hr>
 
 <h4>
-  <p style="text-indent: 150px">
+  <p align="center">
     PAIR 
     <% if @post.Pair=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
@@ -97,8 +97,7 @@
     <% if @post.Egr=="0" %>
       <span style="font-family:Wingdings">&#161;</span>
     <% end %>
-    </p>
-    <p style="text-indent: 150px">
+    
      CAN
     <% if @post.Can=="1" %>
       <span style="font-family:Wingdings">&#163;</span>
@@ -153,13 +152,26 @@
 
     $ <%=@post.CASmog.to_f.round(2) %> | California Smog Inspection<br>
     $ <%=@post.CAInsp.to_f.round(2) %> | California Smog Insp./ Heavy Duty Vehicles<br>
-    $ <%=@post.VIN2.to_f.round(2) %> | VIN<br>
     $ <%=@post.CASmogCert.to_f.round(2) %> | California Smog Certificate<br>
     $ <%=@post.PreInsp.to_f.round(2) %> | Pre-Inspection<br>
     $ <%=@post.ReInsp.to_f.round(2) %> | Re-Inspection<br>
     $ <%=@post.EngCover.to_f.round(2) %> | Remove Eng. Cover (If Needed) Vans<br>
     $ <%=@post.Other.to_f.round(2) %> | Other<br>
     $ <%=@post.Evap.to_f.round(2) %> | Evap. Test<br>
+    <div id="divCheckbox" style="display: none;"> 
+    <%=esum=0 %>
+    <%=esum+=@post.CASmog.to_f %>
+    <%=esum+=@post.CAInsp.to_f %>
+    <%=esum+=@post.CASmogCert.to_f %>
+    <%=esum+=@post.PreInsp.to_f %>
+    <%=esum+=@post.ReInsp.to_f %>
+    <%=esum+=@post.EngCover.to_f %>
+    <%=esum+=@post.Other.to_f %>
+    <%=esum+=@post.Evap.to_f %>
+    <%=@post.Est=esum %>
+    </div>
+
+
     $ <%=@post.Est.to_f.round(2) %> | Estimates<br>
     $ <%=@post.GasCap.to_f.round(2) %> | Gas Cap(s)<br>
     $ <%=@post.Mis.to_f.round(2) %> | Miscellaneous<br>
@@ -169,20 +181,16 @@
     <%=sum=0 %>
     <%=sum+=@post.CASmog.to_f %>
     <%=sum+=@post.CAInsp.to_f %>
-    <%=sum+=@post.VIN2.to_f %>
     <%=sum+=@post.CASmogCert.to_f %>
     <%=sum+=@post.PreInsp.to_f %>
     <%=sum+=@post.ReInsp.to_f %>
     <%=sum+=@post.EngCover.to_f %>
     <%=sum+=@post.Other.to_f %>
     <%=sum+=@post.Evap.to_f %>
-    <%=sum+=@post.Est.to_f %>
     <%=sum+=@post.GasCap.to_f %>
     <%=sum+=@post.Mis.to_f %>
-    <%=tax=sum* @post.Tax.to_f%>
     </div>
-    $ <%=sum.round(2)%> | Total Without Tax<br>
-    $ <%=(tax+sum).round(2)%> | Total With Tax<br>
+    $ <%=(sum).round(2)%> | Total<br>
 
 </h3>
 <hr>

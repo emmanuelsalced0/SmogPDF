@@ -11,7 +11,6 @@
   
   def update
     if @post.update(post_params)
-      set_clientnum
       flash[:sucess] = "Post was successfully updated"
       redirect_to post_path(@post)
     else
@@ -39,13 +38,13 @@
         pdf = PostPdf.new(@post, view_context)
         send_data pdf.render, 
           type: 'application/pdf', 
-          filename: "#{@post.Veh_Year}, #{@post.Make} #{@post.Model}.pdf"
+          filename: "#{I18n.l(@post.created_at, format: "%m.%d.%y").to_s}, #{@post.Name}.pdf"
       end
     end
   end
 
   def index
-    @posts = Post.all.paginate(page: params[:page], per_page: 10)
+    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 10)
   end
    
   def destroy

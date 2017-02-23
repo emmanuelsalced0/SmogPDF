@@ -4,12 +4,12 @@
   <div class='col-xs-12'>
     <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
-    <div class="form-group">
+      <div class="form-group">
       <div class="control-label col-sm-2">
         <%= f.label :number %>
       </div>
       <div class="col-sm-8">
-        <%= f.text_field :number, class: "form-control", placeholder: "Enter username", autofocus: true %>
+        <%= f.text_field :number, class: "form-control", placeholder: "Enter number", autofocus: true %>
       </div>
       </div>
 
@@ -43,7 +43,7 @@
       </div>
 <% end %>
     <div class="col-xs-4 col-xs-offset-4">
-    [ <%= link_to "Cancel request and return to articles listing", posts_path %> ]
+    [ <%= link_to "Cancel request", posts_path %> ]
     </div>
   </div>
 </div>
