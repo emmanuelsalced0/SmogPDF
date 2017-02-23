@@ -378,10 +378,6 @@ class PostPdf < Prawn::Document
     text "#{price(@post.CAInsp)}", size: 16, style: :bold, :align => :left
   end
 
-  def vin2
-    text "V.I.N.: #{price(@post.VIN2)}", size: 16, style: :bold, :align => :left
-  end
-
   def casmogcert    
     text "#{price(@post.CASmogCert)}" , size: 16, style: :bold, :align => :left
   end
@@ -397,7 +393,7 @@ class PostPdf < Prawn::Document
     if (@post.ReInsp.to_i == 0)
       text "_______", size: 16, style: :bold, :align => :left
     else  
-      text "Re-Inspection: #{@post.ReInsp}", size: 16, style: :bold, :align => :left
+      text "#{@post.ReInsp}", size: 16, style: :bold, :align => :left
     end
   end
   def engcover
@@ -411,7 +407,7 @@ class PostPdf < Prawn::Document
      if (@post.Other.to_i == 0)
       text "_______", size: 16, style: :bold, :align => :left
     else 
-     text "Other: #{@post.Other}", size: 16, style: :bold, :align => :left
+     text "#{@post.Other}", size: 16, style: :bold, :align => :left
     end 
   end
   def evap
@@ -435,7 +431,7 @@ class PostPdf < Prawn::Document
      if (@post.Mis.to_i == 0)
       text "_______", size: 16, style: :bold, :align => :left
     else 
-      text "Miscellaneous: #{@post.Mis}", size: 16, style: :bold, :align => :left
+      text "#{@post.Mis}", size: 16, style: :bold, :align => :left
     end 
   end
   def tax
