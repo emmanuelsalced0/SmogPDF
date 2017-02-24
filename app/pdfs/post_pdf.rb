@@ -26,6 +26,7 @@ class PostPdf < Prawn::Document
     licplate
     miles
     vin
+    email
   end
 
   def payment
@@ -117,7 +118,7 @@ class PostPdf < Prawn::Document
 
   def veh_year
     bounding_box([0, bounds.top - 250], :width => 145, :height => 30) do
-      text_box "Veh/Year: #{@post.Veh_Year}"+ " . " * 50,:overflow => :truncate, size: 16, style: :bold
+      text_box "Veh:/Year: #{@post.Veh_Year}"+ " . " * 50,:overflow => :truncate, size: 16, style: :bold
       #transparent(0.5) { stroke_bounds }
     end
   end
@@ -151,11 +152,17 @@ class PostPdf < Prawn::Document
   end
   
   def vin
-    bounding_box([0, bounds.top - 310], :width => bounds.right, :height => 30) do
+    bounding_box([0, bounds.top - 310], :width => 275, :height => 30) do
       text_box "V.I.N.: #{@post.VIN}"+ " . " * 50, :overflow => :truncate, size: 16, style: :bold
       #transparent(0.5) { stroke_bounds }
     end
   end
+  def email
+    bounding_box([bounds.right - (275), bounds.top - 310], :width => 275, :height => 30) do
+      text_box "| e-mail: #{@post.email}"+ " . " * 50, :overflow => :truncate, size: 16, style: :bold
+      #transparent(0.5) { stroke_bounds }
+    end
+  end  
 
   def visa
     if(@post.Visa.to_f==1)
