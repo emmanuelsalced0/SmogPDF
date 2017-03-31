@@ -86,7 +86,10 @@
 
   def splitvin
     String a = @post.scan
-    @post.VIN = a[2,17]
+    if @post.scan.length !=0 
+      @post.VIN = a[2,17]
+    end
+
   end
 
   

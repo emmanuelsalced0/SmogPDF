@@ -449,11 +449,12 @@ class PostPdf < Prawn::Document
     end 
   end
   def total
-    if (@post.Total.to_i == 0)
-      text "_____", size: 16, style: :bold, :align => :left
-    else 
-      text "#{price(@post.Total)}", size: 16, style: :bold, :align => :left
-    end 
+     text "_____", size: 16, style: :bold, :align => :left
+    #if (@post.Total.to_i == 0)
+     #  text "_____", size: 16, style: :bold, :align => :left 
+    #else 
+    #  text "#{price(@post.Total)}", size: 16, style: :bold, :align => :left
+    #end 
   end
 
 
