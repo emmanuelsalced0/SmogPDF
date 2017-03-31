@@ -79,12 +79,8 @@
   end
 
   def cleanvin
-    arr = @post.VIN.split('')
-    if arr[0]==1
-      arr.delete(0)
-    end
-
-    @post.VIN = arr.join('')
+   String vn = @post.VIN
+    @post.VIN = vn.reverse.chop.reverse
 
 
   end  
