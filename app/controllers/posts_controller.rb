@@ -1,12 +1,27 @@
  class PostsController <ApplicationController
-  before_action :set_post, only: [:edit, :update, :show, :destroy]
-  before_action :set_notindex, only: [:new,:edit, :update, :create, :show, :destroy, :index]
+  before_action :set_post, only: [:edit, :update, :show, :destroy, :blank]
+  before_action :set_notindex, only: [:new,:edit, :update, :create, :show, :destroy, :index, :blank]
 
   def new
     @post = Post.new
   end
 
   def edit
+  end
+
+  def blank
+    @post = Post.new(post_params)
+    @post.user = current_user
+    set_clientnum(@post.user)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = PostPdf.new(@post, view_context)
+        send_data pdf.render, 
+          type: 'application/pdf', 
+          filename: "#{I18n.l(@post.created_at, format: "%m.%d.%y").to_s}, #{@post.Name}.pdf"
+      end
+    end
   end
   
   def update
@@ -53,6 +68,21 @@
     redirect_to posts_path
     flash[:danger] = "Post Was Deleted"
   end  
+
+  def blank
+    set_clientnum(@post.user)
+    @post.total = 0
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = PostPdf.new(@post, view_context)
+        send_data pdf.render, 
+          type: 'application/pdf', 
+          filename: "#{I18n.l(@post.created_at, format: "%m.%d.%y").to_s}, #{@post.Name}.pdf"
+      end
+    end
+  end
 
   def splitvin
     String a = @post.scan

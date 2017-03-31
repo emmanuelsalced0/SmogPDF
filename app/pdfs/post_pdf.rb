@@ -449,7 +449,11 @@ class PostPdf < Prawn::Document
     end 
   end
   def total
-      text "#{price(@post.Total)}", size: 16, style: :bold, :align => :right  
+    if (@post.Total.to_i == 0)
+      text "_____", size: 16, style: :bold, :align => :left
+    else 
+      text "#{price(@post.Total)}", size: 16, style: :bold, :align => :left
+    end 
   end
 
 
@@ -498,7 +502,7 @@ class PostPdf < Prawn::Document
       text "Total: $", size: 16, style: :bold, :align => :right  
   end  
   
-
+  
 
 
   def clientnum
@@ -541,14 +545,18 @@ class PostPdf < Prawn::Document
     sum+=@post.Evap.to_f 
     sum+=@post.GasCap.to_f 
     sum+=@post.Mis.to_f 
-    @post.Total = sum 
     @post.Est =esum 
+
+    if @post.LicPlate.length.to_i == 0    
+      @post.Total = 0
+    else
+      @post.Total = sum
+    end
   end
 
   def date
     bounding_box([bounds.right-78, 17 ], :width => 100, :height => 12) do
       text_box "#{I18n.l(@post.created_at, format: "%m-%d-%y").to_s}" ,:overflow => :truncate, size: 12, style: :bold
     end
-end
-
+  end
 end
