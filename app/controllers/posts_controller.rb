@@ -8,21 +8,6 @@
 
   def edit
   end
-
-  def blank
-    @post = Post.new(post_params)
-    @post.user = current_user
-    set_clientnum(@post.user)
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = PostPdf.new(@post, view_context)
-        send_data pdf.render, 
-          type: 'application/pdf', 
-          filename: "#{I18n.l(@post.created_at, format: "%m.%d.%y").to_s}, #{@post.Name}.pdf"
-      end
-    end
-  end
   
   def update
     if @post.update(post_params)
@@ -47,6 +32,7 @@
 
   def show
     set_clientnum(@post.user)
+    cleanvin
     splitscan
     respond_to do |format|
       format.html
@@ -91,6 +77,17 @@
     end
 
   end
+
+  def cleanvin
+    arr = @post.VIN.split('')
+    if arr[0]==1
+      arr.delete(0)
+    end
+
+    @post.VIN = arr.join('')
+
+
+  end  
 
   
   def splitlic
