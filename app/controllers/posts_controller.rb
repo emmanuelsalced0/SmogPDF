@@ -32,6 +32,7 @@
 
   def show
     set_clientnum(@post.user)
+    splitscan
     respond_to do |format|
       format.html
       format.pdf do
@@ -53,6 +54,25 @@
     flash[:danger] = "Post Was Deleted"
   end  
 
+  def splitvin
+    String a = @post.scan
+    @post.VIN = a[2,17]
+  end
+
+  
+  def splitlic
+    String a= @post.scan[20,26]
+    if @post.scan.length !=0 
+      @post.LicPlate = a[0,7]
+    end
+    
+  end
+
+  def splitscan
+      splitlic
+      splitvin
+  end  
+
  
   private
     def set_post
@@ -60,7 +80,7 @@
     end
 
     def post_params
-      params.require(:post).permit(:Name, :Phone, :Adress, :Veh_Year, :Make, :Model, :LicPlate, :Miles, :VIN, :Visa, :MasterCard, :Discover, :Cash, :Pair, :Air, :Acl, :Tc_cac, :Efe, :Egr, :Can, :Cat, :Mil, :O2s, :Pcv, :Timing, :CASmog, :CAInsp, :VIN2, :CASmogCert, :PreInsp, :ReInsp, :EngCover, :Other, :Evap, :Est, :GasCap, :Mis, :Tax, :Clientnum,:email)
+      params.require(:post).permit(:Name, :Phone, :Adress, :Veh_Year, :Make, :Model, :LicPlate, :Miles, :VIN, :Visa, :MasterCard, :Discover, :Cash, :Pair, :Air, :Acl, :Tc_cac, :Efe, :Egr, :Can, :Cat, :Mil, :O2s, :Pcv, :Timing, :CASmog, :CAInsp, :VIN2, :CASmogCert, :PreInsp, :ReInsp, :EngCover, :Other, :Evap, :Est, :GasCap, :Mis, :Tax, :Clientnum, :email, :scan)
     end 
     
     def set_notindex

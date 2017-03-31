@@ -77,7 +77,7 @@ class PostPdf < Prawn::Document
       totaltext
 
     end
-    bounding_box([bounds.right - 70, bounds.top - 390], :width => 75, :height => 270) do
+    bounding_box([bounds.right - 70, bounds.top - 390], :width => 45, :height => 270) do
       casmog
       cainsp
       casmogcert
@@ -378,124 +378,124 @@ class PostPdf < Prawn::Document
   end
 
   def casmog
-    text "#{price(@post.CASmog)}", size: 16, style: :bold, :align => :left
+    text "#{price(@post.CASmog)}", size: 16, style: :bold, :align => :right
   end
 
   def cainsp
-    text "#{price(@post.CAInsp)}", size: 16, style: :bold, :align => :left
+    text "#{price(@post.CAInsp)}", size: 16, style: :bold, :align => :right
   end
 
   def casmogcert    
-    text "#{price(@post.CASmogCert)}" , size: 16, style: :bold, :align => :left
+    text "#{price(@post.CASmogCert)}" , size: 16, style: :bold, :align => :right
   end
 
   def preinsp
       if (@post.PreInsp.to_i == 0)
-        text "_______", size: 16, style: :bold, :align => :left
+        text "_____", size: 16, style: :bold, :align => :left
       else
-      text "#{@post.PreInsp}", size: 16, style: :bold, :align => :left
+      text "#{@post.PreInsp}", size: 16, style: :bold, :align => :right
       end
   end
   def reinsp
     if (@post.ReInsp.to_i == 0)
-      text "_______", size: 16, style: :bold, :align => :left
+      text "_____", size: 16, style: :bold, :align => :left
     else  
-      text "#{@post.ReInsp}", size: 16, style: :bold, :align => :left
+      text "#{@post.ReInsp}", size: 16, style: :bold, :align => :right
     end
   end
   def engcover
      if (@post.EngCover.to_i == 0)
-      text "_______", size: 16, style: :bold, :align => :left
+      text "_____", size: 16, style: :bold, :align => :left
     else 
-      text "#{@post.EngCover}", size: 16, style: :bold, :align => :left
+      text "#{@post.EngCover}", size: 16, style: :bold, :align => :right
     end
   end
   def other
      if (@post.Other.to_i == 0)
-      text "_______", size: 16, style: :bold, :align => :left
+      text "_____", size: 16, style: :bold, :align => :left
     else 
-     text "#{@post.Other}", size: 16, style: :bold, :align => :left
+     text "#{@post.Other}", size: 16, style: :bold, :align => :right
     end 
   end
   def evap
      if (@post.Evap.to_i == 0)
-      text "_______", size: 16, style: :bold, :align => :left
+      text "_____", size: 16, style: :bold, :align => :left
     else 
-      text "#{@post.Evap}", size: 16, style: :bold, :align => :left 
+      text "#{price(@post.Evap)}", size: 16, style: :bold, :align => :right 
     end 
   end
   def est
-      text "#{price(@post.Est)}", size: 16, style: :bold , :align => :left
+      text "#{price(@post.Est)}", size: 16, style: :bold , :align => :right
   end
   def gascap
      if (@post.GasCap.to_i == 0)
-      text "_______", size: 16, style: :bold, :align => :left
+      text "_____", size: 16, style: :bold, :align => :left
     else 
-      text "#{@post.GasCap}", size: 16, style: :bold, :align => :left
+      text "#{@post.GasCap}", size: 16, style: :bold, :align => :right
     end
   end
   def mis
      if (@post.Mis.to_i == 0)
-      text "_______", size: 16, style: :bold, :align => :left
+      text "_____", size: 16, style: :bold, :align => :left
     else 
       text "#{@post.Mis}", size: 16, style: :bold, :align => :left
     end 
   end
   def tax
      if (@post.Tax.to_i == 0)
-      text "_______", size: 16, style: :bold, :align => :left
+      text "_____", size: 16, style: :bold, :align => :left
     else 
-      text "#{@post.Tax}", size: 16, style: :bold, :align => :left
+      text "#{@post.Tax}", size: 16, style: :bold, :align => :right
     end 
   end
   def total
-      text "#{price(@post.Total)}", size: 16, style: :bold, :align => :left  
+      text "#{price(@post.Total)}", size: 16, style: :bold, :align => :right  
   end
 
 
 
 
     def casmogtext
-    text "California Smog Inspection:", size: 16, style: :bold, :align => :right
+    text "California Smog Inspection: $", size: 16, style: :bold, :align => :right
   end
 
   def cainsptext
-    text "California Smog Insp./ Heavy Duty Vehicles:", size: 16, style: :bold, :align => :right
+    text "California Smog Insp./ Heavy Duty Vehicles: $", size: 16, style: :bold, :align => :right
   end
 
   def casmogcerttext    
-    text "California Smog Certificate:" , size: 16, style: :bold, :align => :right
+    text "California Smog Certificate: $" , size: 16, style: :bold, :align => :right
   end
 
   def preinsptext
       text "Pre-Inspection:", size: 16, style: :bold, :align => :right
   end
   def reinsptext
-      text "Re-Inspection:", size: 16, style: :bold, :align => :right 
+      text "Re-Inspection: $", size: 16, style: :bold, :align => :right 
   end
   def engcovertext
-      text "Remove Eng. Cover (If Needed) Vans:", size: 16, style: :bold, :align => :right 
+      text "Remove Eng. Cover (If Needed) Vans:  ", size: 16, style: :bold, :align => :right 
   end
   def othertext
-     text "Other:", size: 16, style: :bold, :align => :right  
+     text "Other:  ", size: 16, style: :bold, :align => :right  
   end
   def evaptext
-      text "Evap. Test:", size: 16, style: :bold, :align => :right  
+      text "Evap. Test: $", size: 16, style: :bold, :align => :right  
   end
   def esttext
-      text "Estimates:", size: 16, style: :bold , :align => :right 
+      text "Estimates: $", size: 16, style: :bold , :align => :right 
   end
   def gascaptext
-      text "Gas Cap(s):", size: 16, style: :bold, :align => :right  
+      text "Gas Cap(s):  ", size: 16, style: :bold, :align => :right  
   end
   def mistext
-      text "Miscellaneous:", size: 16, style: :bold, :align => :right  
+      text "Miscellaneous:  ", size: 16, style: :bold, :align => :right  
   end
   def taxtext
-      text "Tax:", size: 16, style: :bold, :align => :right  
+      text "Tax:  ", size: 16, style: :bold, :align => :right  
   end
   def totaltext
-      text "Total:", size: 16, style: :bold, :align => :right  
+      text "Total: $", size: 16, style: :bold, :align => :right  
   end  
   
 
@@ -510,7 +510,7 @@ class PostPdf < Prawn::Document
 
 
   def price(num)
-    @view.number_to_currency(num.to_f)
+    @view.number_to_currency(num.to_f, :unit=>'')
   end
 
   def box
